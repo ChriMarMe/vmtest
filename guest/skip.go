@@ -25,7 +25,7 @@ func SkipIfNotInVM(t testing.TB) {
 // The presence of VMTEST_IN_GUEST=1 env var (which can be passed on the
 // kernel commandline, using qemu.WithVmtestIdent) is used to determine this.
 func SkipIfInVM(t testing.TB) {
-	if os.Getenv("VMTEST_IN_GUEST") != "1" {
-		t.Skip("Skipping test -- must be run inside vmtest VM")
+	if os.Getenv("VMTEST_IN_GUEST") == "1" {
+		t.Skip("Skipping test -- must be run outside vmtest VM")
 	}
 }
